@@ -1,0 +1,15 @@
+<header class="header">
+  <div class="header__wrapper">
+    <h1 class="header__logo">
+      <a href="{{ site.url }}" class="header__logo-link">
+        {{ site.name }}
+      </a>
+    </h1>
+    <nav id="header-nav" class="header__nav">
+      {# @see vendor/timber/timber/lib/Menu.php #}
+      {% include 'components/menu.twig' with {
+        items: header_menu.get_items
+      } %}
+    </nav>
+  </div>
+</header>

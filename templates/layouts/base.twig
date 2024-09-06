@@ -1,11 +1,20 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html {{ site.language_attributes }}>
 
-{% include "includes/head.twig" %}
+{% block head %}
+  {% include "includes/head.twig" %}
+{% endblock %}
 
-<body class="{{ body_class }}{% if pagename %} page-name-{{ pagename }}{% endif %}">
+<body class="{{ body_class }}">
+  {# @see https://developer.wordpress.org/reference/functions/wp_body_open/ #}
+  {{ function('wp_body_open') }}
 
-  <a href="#content" class="skip-to-content" tabindex="0">Skip to content</a>
+  {# Skip to content link, necessary for accessibility. #}
+  <a href="#content" class="skip-to-content" tabindex="0">{{ _e('Skip to content') }}</a>
+
+  {% block header %}
+    {% include "components/header.twig" %}
+  {% endblock %}
 
   {% include "includes/svgs.twig" %}
 
