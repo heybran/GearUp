@@ -4,6 +4,7 @@ Thumbs.db
 
 # IDE and local environment
 /.vscode/
+/.idea/
 
 # Packages
 /vendor/
@@ -11,6 +12,7 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-lock.yaml
 
 # Application
 .env
