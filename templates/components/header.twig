@@ -1,11 +1,29 @@
 <header class="header">
   <div class="header__wrapper">
-    <h1 class="header__logo">
-      <a href="{{ site.url }}" class="header__logo-link">
-        {{ site.name }}
-      </a>
-    </h1>
-    <nav id="header-nav" class="header__nav">
+    <div class="header__logo-wrapper">
+      {% if logo %}
+        {{ logo }}
+      {% else %}
+        <a href="{{ site.url }}" class="header__logo-link">
+          {{ site.name }}
+        </a>
+      {% endif %}
+    </div>
+    <button
+      type="button"
+      class="header__navigation-toggle js-header-navigation-toggle"
+      aria-controls="header-navigation"
+      aria-expanded="false"
+    >
+      Menu
+    </button>
+    <nav
+      role="navigation"
+      aria-labelledby="header-navigation-heading"
+      id="header-navigation"
+      class="header__navivation"
+    >
+      <h2 id="header-navigation-heading">Menu</h2>
       {# @see vendor/timber/timber/lib/Menu.php #}
       {% include 'components/menu.twig' with {
         items: header_menu.get_items

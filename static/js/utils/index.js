@@ -4,7 +4,7 @@
  *
  * @see http://youmightnotneedjquery.com/#ready
  *
- * @param {Function} callback the function to call when the DOM is ready
+ * @param {Function} callback the function to call when the DOM is ready.
  */
 export const onDocumentReady = callback => {
   if (document.readyState !== 'loading') {

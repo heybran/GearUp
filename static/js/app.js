@@ -1,25 +1,13 @@
-/* eslint-disable */
-import LazySizes from 'lazysizes';
-import Unveilhooks from 'lazysizes/plugins/unveilhooks/ls.unveilhooks';
-/* eslint-enable */
-
-import { onDocumentReady } from './utils';
-
+// Utils
+import { onDocumentReady } from 'utils/index.js';
 // Components
-import Menu from './components/menu';
+import Menu from 'components/menu.js';
 
 onDocumentReady(() => {
-  new Menu();
-
-  // This is an example of how to do code splitting. The JS in this
-  // referenced file will only be loaded on that page. Good for
-  // when you have a large amount of JS only needed in one place
-  //
-  //  if (document.querySelector('#js-process')) {
-  //    import(/* webpackChunkName: "process" */ './pages/process')
-  //      .then(module => {
-  //        const Process = module.default;
-  //        this.process = new Process();
-  //      });
-  //  }
+  new Menu({
+    // Toggle button to open/hide the main navigation menu.
+    toggleButtonClass: 'js-header-navigation-toggle',
+    // Class added to navigation menu when it's open.
+    navigationOpenClass: 'header__navigation-toggle--open',
+  }).run();
 });

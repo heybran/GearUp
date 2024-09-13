@@ -5,4 +5,13 @@
   <link rel="stylesheet" href="{{ theme.link }}/dist/app.css?v={{ theme_version }}" type="text/css" media="all" />
 
   {{ function('wp_head') }}
+
+  <script type="importmap">
+    {
+      "imports": {
+        "utils/": "/wp-content/themes/GearUp/static/js/utils/",
+        "components/": "/wp-content/themes/GearUp/static/js/components/"
+      }
+    }
+  </script>
 </head>
