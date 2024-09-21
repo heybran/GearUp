@@ -1,5 +1,5 @@
 <header class="header">
-  <div class="header__wrapper">
+  <div class="header__wrapper padding-4">
     <div class="header__logo-wrapper">
       {% if logo %}
         {{ logo }}
@@ -15,15 +15,20 @@
       aria-controls="header-navigation"
       aria-expanded="false"
     >
-      Menu
+      <div class="header__navigation-toggle-text">Menu</div>
+      <div class="header__navigation-toggle-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </button>
     <nav
       role="navigation"
       aria-labelledby="header-navigation-heading"
       id="header-navigation"
-      class="header__navivation"
+      class="header__navigation"
     >
-      <h2 id="header-navigation-heading">Menu</h2>
+      <h2 id="header-navigation-heading" class="visually-hidden">Menu</h2>
       {# @see vendor/timber/timber/lib/Menu.php #}
       {% include 'components/menu.twig' with {
         items: header_menu.get_items

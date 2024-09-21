@@ -1,26 +1,31 @@
 export default class Menu {
-  constructor({ toggleButtonClass, navigationOpenClass }) {
+  constructor({ toggleButtonClass, navigationOpenClass, container }) {
     this.toggleButtonClass = toggleButtonClass;
     this.navigationOpenClass = navigationOpenClass;
+    this.container = container;
   }
 
   run() {
-    this.toggleButton = document.querySelector(`.${this.toggleButtonClass}`);
+    if (!this.container) {
+      throw new Error(`Container is invalid.`);
+    }
+
+    this.toggleButton = this.container.querySelector(`.${this.toggleButtonClass}`);
     if (!this.toggleButton) {
       // eslint-disable-next-line
-      return console.log(`No toggle button found with this class: '${this.toggleButtonClass}'`);
+      throw new Error(`No toggle button found with this class: '${this.toggleButtonClass}'`);
     }
 
     const ariaControls = this.toggleButton.getAttribute('aria-controls');
     if (!ariaControls) {
       // eslint-disable-next-line
-      return console.log(`Toggle button is missing 'aria-controls' attribute or attribute value is empty.`);
+      throw new Error(`Toggle button is missing 'aria-controls' attribute or attribute value is empty.`);
     }
 
-    this.navigation = document.getElementById(ariaControls);
+    this.navigation = this.container.getElementById(ariaControls);
     if (!this.navigation) {
       // eslint-disable-next-line
-      return console.log(`Missing nav element with id of '${ariaControls}'`);
+      throw new Error(`Missing nav element with id of '${ariaControls}'`);
     }
 
     this.toggleButton.addEventListener('click', this.toggleNavigation);

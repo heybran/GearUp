@@ -9,5 +9,6 @@ onDocumentReady(() => {
     toggleButtonClass: 'js-header-navigation-toggle',
     // Class added to navigation menu when it's open.
     navigationOpenClass: 'header__navigation-toggle--open',
+    container: document,
   }).run();
 });
