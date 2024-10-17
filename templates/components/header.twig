@@ -1,13 +1,19 @@
 <header class="header">
-  <div class="header__wrapper padding-4">
+  <div class="header__wrapper position-relative display-flex align-items-center justify-content-space-between padding-8--desktop padding-4--mobile margin-inline-auto">
     <div class="header__logo-wrapper">
-      {% if logo %}
-        {{ logo }}
-      {% else %}
-        <a href="{{ site.url }}" class="header__logo-link">
+      <a href="{{ site.url }}" class="header__logo-link" rel="home">
+        {% if logo_url %}
+          <img
+            src="{{ logo_url }}"
+            width="{{ options.logo_width ?: 50 }}"
+            height="{{ options.logo_width ?: 50 }}"
+            alt="{{ site.name }}"
+            decoding="async"
+          >
+        {% else %}
           {{ site.name }}
-        </a>
-      {% endif %}
+        {% endif %}
+      </a>
     </div>
     <button
       type="button"
@@ -15,8 +21,8 @@
       aria-controls="header-navigation"
       aria-expanded="false"
     >
-      <div class="header__navigation-toggle-text">Menu</div>
-      <div class="header__navigation-toggle-icon">
+      <div class="header__navigation-toggle-text font-weight-900">Menu</div>
+      <div class="header__navigation-toggle-icon position-relative">
         <span></span>
         <span></span>
         <span></span>
@@ -36,3 +42,97 @@
     </nav>
   </div>
 </header>
+<style>
+  header {
+    border-bottom: 1px solid var(--header-border-color, black);
+  }
+  .header__wrapper {
+    max-width: var(--site-max-width);
+  }
+  .header__logo-wrapper {
+    flex-shrink: 0;
+  }
+  .header__navigation a {
+    font-size: var(--font-size--small);
+    font-weight: var(--font-weight--medium);
+    color: inherit;
+  }
+  .header__navigation a:not(:hover) {
+    text-decoration: none;
+  }
+  .header__navigation-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+
+    @media (any-pointer: coarse) {
+      display: flex;
+      align-items: center;
+      --gap: 10px;
+      --line-width: 30px;
+      --line-height: 3px;
+      --line-gap: 6px;
+      padding-inline-end: var(--line-width);
+      gap: var(--gap);
+    }
+
+    span {
+      display: block;
+      position: absolute;
+      width: var(--line-width);
+      height: var(--line-height);
+      background-color: #333;
+      transition: .5s;
+    }
+
+    span:first-child {
+      top: 0;
+    }
+
+    span:nth-child(2) {
+      top: calc(50% - var(--line-height) / 2);
+    }
+
+    span:nth-child(3) {
+      bottom: 0;
+    }
+
+    &[aria-expanded="true"] span:nth-child(2) {
+      display: none;
+    }
+
+    &[aria-expanded="true"] span:first-child {
+      top: calc(50% - var(--line-height) / 2);
+      transform: rotate(-45deg);
+    }
+
+    &[aria-expanded="true"] span:last-child {
+      top: calc(50% - var(--line-height) / 2);
+      transform: rotate(45deg);
+    }
+
+    &[aria-expanded="true"] ~ .header__navigation {
+      height: calc(100vh - 100%);
+      height: calc(100dvh - 100%);
+      overflow: auto;
+    }
+  }
+
+  .header__navigation-toggle-icon {
+    pointer-events: none;
+    height: calc(var(--line-height) * 3 + var(--line-gap) * 2);
+  }
+
+  @media (any-pointer: coarse) {
+    .header__navigation {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 0;
+      background-color: #fff;
+      transition: height 0.75s ease;
+      overflow: hidden;
+    }
+  }
+</style>

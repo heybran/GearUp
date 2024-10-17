@@ -3,7 +3,32 @@
   <meta content="width=device-width, initial-scale=1" name="viewport" />
   <title>{% if wp_title %}{{ wp_title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
   <link rel="stylesheet" href="{{ theme.link }}/dist/app.css?v={{ theme_version }}" type="text/css" media="all" />
-
+  <style>
+    @font-face {
+      font-family: "Mona Sans";
+      font-style: normal;
+      font-weight: 200 900;
+      font-display: block;
+      src: url("{{ theme.link }}/static/fonts/Mona-Sans.woff2") format("woff2");
+      font-stretch: 75% 125%;
+    }
+    @font-face {
+      font-family: "Mona Sans Expanded";
+      font-style: normal;
+      font-weight: 200 900;
+      font-display: block;
+      src: url("{{ theme.link }}/static/fonts/Mona-Sans.woff2") format("woff2");
+      font-stretch: 125%;
+    }
+    @font-face {
+      font-family: "Mona Sans Condensed";
+      font-style: normal;
+      font-weight: 200 900;
+      font-display: block;
+      src: url("{{ theme.link }}/static/fonts/Mona-Sans.woff2") format("woff2");
+      font-stretch: 94%;
+    }
+  </style>
   {{ function('wp_head') }}
 
   <script type="importmap">
