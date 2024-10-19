@@ -1,5 +1,5 @@
 <header class="header">
-  <div class="header__wrapper position-relative display-flex align-items-center justify-content-space-between padding-8--desktop padding-4--mobile margin-inline-auto">
+  <div style="max-width: var(--site-max-width);" class="header__wrapper position-relative display-flex align-items-center justify-content-space-between padding-8--desktop padding-4--mobile margin-inline-auto">
     <div class="header__logo-wrapper">
       <a href="{{ site.url }}" class="header__logo-link" rel="home">
         {% if logo_url %}
@@ -45,9 +45,6 @@
 <style>
   header {
     border-bottom: 1px solid var(--header-border-color, black);
-  }
-  .header__wrapper {
-    max-width: var(--site-max-width);
   }
   .header__logo-wrapper {
     flex-shrink: 0;

@@ -19,8 +19,10 @@
   {% include "includes/svgs.twig" %}
 
   <main id="content" tabindex="-1">
-    {% block pageBody %}
-    {% endblock %}
+    <div class="padding-8--desktop padding-4--mobile margin-inline-auto" style="max-width: var(--site-max-width); ">
+      {% block pageBody %}
+      {% endblock %}
+    </div>
   </main>
 
   {% block footer %}

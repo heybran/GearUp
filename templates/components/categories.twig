@@ -1,0 +1,12 @@
+{% if categories %}
+  <div class="tags font-weight-500 has-primary-color">
+    {% for category in categories %}
+      <a href="{{ category.link }}" rel="tag">{{ category.name }}</a>
+      {% spaceless %}
+        {% if not loop.last %}
+          <span aria-hidden="true">,</span>
+        {% endif %}
+      {% endspaceless %}
+    {% endfor %}
+  </div>
+{% endif %}

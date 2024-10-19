@@ -2,7 +2,7 @@
 /**
  * Single post / article.
  *
- * @package Skela
+ * @package GearUp
  */
 
 $context            = Timber::context();

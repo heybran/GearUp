@@ -2,9 +2,49 @@
 
 {% block pageBody %}
 
-<h1>{{ article.title }}</h1>
+  {# Categories #}
+  {% set hasCategories = article.terms('category') %}
+  {% include 'components/categories.twig' with { categories: article.terms('category') } %}
 
-{{ article.content }}
+  {# Post Title #}
+  <h1 class="{{ hasCategories ? 'margin-block-start-8' : '' }}">{{ article.title }}</h1>
+
+  <div class="display-flex align-items-center gap-2 margin-block-start-8 font-weight-500 has-secondary-color">
+    {# Post Author #}
+    {% if article.author %}
+      {% set author = article.author %}
+      <div class="author display-inline-flex align-items-center gap-3">
+        {% if author.avatar %}
+          <div class="author__profile-wrapper">
+            <img
+              width="26"
+              height="26"
+              src="{{ author.avatar({ size: 26 }) }}"
+              alt="{{ author.name }}'s profile picture"
+              class="border-radius-round"
+            >
+          </div>
+        {% endif %}
+        <p class="author__name">
+          {{ author.name }}
+        </p>
+        ·
+      </div>
+    {% endif %}
+
+    {# Post Dates #}
+    <p>
+      发布时间：<time>{{ article.post_date | date('Y-m-d') }}</time>
+      {% if article.post_date != article.post_modified %}
+        ，更新时间：<time>{{ article.post_modified | date('Y-m-d') }}</time>
+      {% endif %}
+    </p>
+  </div>
+
+  <div class="entry-content margin-block-start-8">
+    {# Post Content #}
+    {{ article.content }}
+  </div>
 
 {% endblock %}
 

@@ -2,4 +2,12 @@ html {
   /* Internal Use */
   --_yellow: #fd0;
   --brand-color: #005397;
+  --site-inline-padding: 2rem;
+  --site-max-width: 1260px;
+
+  --font-size--small: clamp(.9rem, 0.9rem + ((1vw - 0.2rem) * 0.255), 1.05rem);
+  --font-weight--medium: 500;
+
+  --color--primary: #ff7043;
+  --color--secondary: #636381;
 }
